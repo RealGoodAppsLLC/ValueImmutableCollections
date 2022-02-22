@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <ValueImmutableCollectionsVersion>0.1.0</ValueImmutableCollectionsVersion>
+    </PropertyGroup>
+</Project>

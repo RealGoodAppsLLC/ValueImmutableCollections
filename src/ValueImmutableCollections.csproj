@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <RootNamespace>RealGoodApps.ValueImmutableCollections</RootNamespace>
+        <Version>$(ValueImmutableCollectionsVersion)</Version>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>ValueImmutableCollections</PackageId>
+        <PackageVersion>$(ValueImmutableCollectionsVersion)</PackageVersion>
+        <Authors>RealGoodApps, LLC</Authors>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/RealGoodAppsLLC/ValueImmutableCollections/main/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/RealGoodAppsLLC/ValueImmutableCollections</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/RealGoodAppsLLC/ValueImmutableCollections</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>ValueImmutableCollections</Description>
+        <PackageReleaseNotes>See the following: https://raw.githubusercontent.com/RealGoodAppsLLC/ValueImmutableCollections/main/CHANGELOG.md</PackageReleaseNotes>
+        <Copyright>Copyright 2022 RealGoodApps, LLC</Copyright>
+        <PackageTags>value immutable collections</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.*" />
+        <PackageReference Include="System.Collections.Immutable" Version="6.0.*" />
+    </ItemGroup>
+
+</Project>
