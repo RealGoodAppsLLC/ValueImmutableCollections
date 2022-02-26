@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <ValueImmutableCollectionsVersion>0.1.0</ValueImmutableCollectionsVersion>
+        <ValueImmutableCollectionsVersion>0.2.0</ValueImmutableCollectionsVersion>
     </PropertyGroup>
 </Project>
