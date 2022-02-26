@@ -122,11 +122,7 @@ namespace RealGoodApps.ValueImmutableCollections
         }
 
         /// <inheritdoc cref="IEquatable{T}"/>
-        public override int GetHashCode()
-        {
-            var hashSetAsArray = this.hashSet.ToImmutableArray();
-            return hashSetAsArray.GetHashCode();
-        }
+        public override int GetHashCode() => this.hashSet.GetHashCode();
 
         /// <summary>
         /// Converts the value hash set to a value immutable list.

@@ -112,12 +112,7 @@ namespace RealGoodApps.ValueImmutableCollections
         }
 
         /// <inheritdoc cref="IEquatable{T}"/>
-        public override int GetHashCode()
-        {
-            var keysAsArray = this.dictionary.Keys.ToImmutableArray();
-            var valuesAsArray = this.dictionary.Values.ToImmutableArray();
-            return HashCode.Combine(keysAsArray, valuesAsArray);
-        }
+        public override int GetHashCode() => this.dictionary.GetHashCode();
 
         /// <summary>
         /// Returns the reference-based immutable dictionary which has reference-based equality checks.
