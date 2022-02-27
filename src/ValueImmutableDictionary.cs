@@ -43,12 +43,20 @@ namespace RealGoodApps.ValueImmutableCollections
 #pragma warning restore SA1402
     {
         private readonly ImmutableDictionary<TKey, TValue> dictionary;
+        private readonly int hashCode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueImmutableDictionary{TKey, TValue}"/> class.
         /// </summary>
         /// <param name="dictionary">An instance of <see cref="ImmutableDictionary{TKey, TValue}"/>.</param>
-        public ValueImmutableDictionary(ImmutableDictionary<TKey, TValue> dictionary) => this.dictionary = dictionary;
+        public ValueImmutableDictionary(ImmutableDictionary<TKey, TValue> dictionary)
+        {
+            this.dictionary = dictionary;
+
+            var keysAsArray = dictionary.Keys.ToImmutableArray();
+            var valuesAsArray = dictionary.Values.ToImmutableArray();
+            this.hashCode = HashCode.Combine(keysAsArray, valuesAsArray);
+        }
 
         /// <inheritdoc cref="ImmutableDictionary{TKey, TValue}"/>
         public int Count => this.dictionary.Count;
@@ -112,7 +120,10 @@ namespace RealGoodApps.ValueImmutableCollections
         }
 
         /// <inheritdoc cref="IEquatable{T}"/>
-        public override int GetHashCode() => this.dictionary.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.hashCode;
+        }
 
         /// <summary>
         /// Returns the reference-based immutable dictionary which has reference-based equality checks.

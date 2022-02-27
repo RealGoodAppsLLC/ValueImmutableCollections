@@ -35,12 +35,19 @@ namespace RealGoodApps.ValueImmutableCollections
 #pragma warning restore SA1402
     {
         private readonly ImmutableList<T> list;
+        private readonly int hashCode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueImmutableList{T}"/> class.
         /// </summary>
         /// <param name="list">An instance of <see cref="ImmutableList{T}"/>.</param>
-        public ValueImmutableList(ImmutableList<T> list) => this.list = list;
+        public ValueImmutableList(ImmutableList<T> list)
+        {
+            this.list = list;
+
+            var listAsArray = list.ToImmutableArray();
+            this.hashCode = listAsArray.GetHashCode();
+        }
 
         /// <inheritdoc cref="ImmutableList{T}"/>
         public bool IsEmpty => this.list.IsEmpty;
@@ -84,7 +91,10 @@ namespace RealGoodApps.ValueImmutableCollections
         }
 
         /// <inheritdoc cref="IEquatable{T}"/>
-        public override int GetHashCode() => this.list.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.hashCode;
+        }
 
         /// <summary>
         /// Converts the value list to a value immutable hash set.

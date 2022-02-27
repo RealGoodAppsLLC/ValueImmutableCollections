@@ -34,12 +34,19 @@ namespace RealGoodApps.ValueImmutableCollections
 #pragma warning restore SA1402
     {
         private readonly ImmutableHashSet<T> hashSet;
+        private readonly int hashCode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueImmutableHashSet{T}"/> class.
         /// </summary>
         /// <param name="hashSet">An instance of <see cref="ImmutableHashSet{T}"/>.</param>
-        public ValueImmutableHashSet(ImmutableHashSet<T> hashSet) => this.hashSet = hashSet;
+        public ValueImmutableHashSet(ImmutableHashSet<T> hashSet)
+        {
+            this.hashSet = hashSet;
+
+            var hashSetAsArray = hashSet.ToImmutableArray();
+            this.hashCode = hashSetAsArray.GetHashCode();
+        }
 
         /// <inheritdoc cref="ImmutableHashSet{T}"/>
         public int Count => this.hashSet.Count;
@@ -122,7 +129,10 @@ namespace RealGoodApps.ValueImmutableCollections
         }
 
         /// <inheritdoc cref="IEquatable{T}"/>
-        public override int GetHashCode() => this.hashSet.GetHashCode();
+        public override int GetHashCode()
+        {
+            return this.hashCode;
+        }
 
         /// <summary>
         /// Converts the value hash set to a value immutable list.
